@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual - Premium Dark</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        // Tu color base solicitado
+                        midnight: '#0B1120',
+                        // Variaciones para profundidad
+                        surface: '#111827', 
+                        surface_light: '#1F2937',
+                        accent: '#38BDF8', // Sky Blue para resaltar
+                        accent_hover: '#0EA5E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Fuente Inter y Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Scrollbar personalizado delgado y elegante */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4B5563; }
+
+        /* Efecto para el video player */
+        .video-glow {
+            box-shadow: 0 0 40px -10px rgba(56, 189, 248, 0.15);
+        }
+        
+        /* Transiciones suaves */
+        .transition-all-300 { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-midnight text-slate-300 h-screen overflow-hidden flex flex-col md:flex-row">
+
+    <!-- SIDEBAR (IZQUIERDA) - CURRICULUM -->
+    <aside class="w-full md:w-80 bg-surface border-r border-slate-800 flex flex-col h-full z-20 flex-shrink-0">
+        
+        <!-- Header del Sidebar -->
+        <div class="p-5 border-b border-slate-800 bg-surface/95 backdrop-blur-sm sticky top-0">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                    JS
+                </div>
+                <div>
+                    <h2 class="text-white font-semibold text-sm leading-tight">Master en React Avanzado</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">Prof. Alex Dev</p>
+                </div>
+            </div>
+            
+            <!-- Barra de Progreso -->
+            <div class="space-y-2">
+                <div class="flex justify-between text-xs font-medium">
+                    <span class="text-slate-400">Tu progreso</span>
+                    <span class="text-accent">35%</span>
+                </div>
+                <div class="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-accent w-[35%] rounded-full shadow-[0_0_10px_rgba(56,189,248,0.5)]"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscador -->
+        <div class="px-4 py-3">
+            <div class="relative group">
+                <i class="fas fa-search absolute left-3 top-2.5 text-slate-500 group-focus-within:text-accent transition-colors"></i>
+                <input type="text" placeholder="Buscar lección..." class="w-full bg-midnight border border-slate-700 rounded-lg py-2 pl-9 pr-3 text-sm text-slate-300 focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all placeholder-slate-600">
+            </div>
+        </div>
+
+        <!-- Lista de Módulos (Scrollable) -->
+        <div class="flex-1 overflow-y-auto" id="curriculum-list">
+            <!-- Módulo 1: Abierto -->
+            <div class="border-b border-slate-800/50">
+                <button class="w-full px-5 py-4 flex items-center justify-between bg-slate-800/30 hover:bg-slate-800/50 transition-colors group">
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1 group-hover:text-slate-400">Módulo 1</p>
+                        <h3 class="text-sm font-semibold text-slate-200">Fundamentos y Hooks</h3>
+                    </div>
+                    <i class="fas fa-chevron-down text-slate-500 group-hover:text-white transition-transform duration-300"></i>
+                </button>
+                
+                <div class="bg-midnight/50">
+                    <!-- Lección Completada -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 border-l-[3px] border-green-500 bg-surface_light/30 hover:bg-surface_light/50 transition-colors group">
+                        <div class="flex-shrink-0 w-5 text-center">
+                            <i class="fas fa-check-circle text-green-500 text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm text-slate-300 truncate group-hover:text-white transition-colors">1.1 Bienvenida e Introducción</p>
+                            <span class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5">
+                                <i class="far fa-play-circle"></i> 05:20
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Lección Activa -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 border-l-[3px] border-accent bg-accent/10 transition-colors group">
+                        <div class="flex-shrink-0 w-5 text-center">
+                            <div class="w-2 h-2 rounded-full bg-accent animate-pulse mx-auto"></div>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm text-accent font-medium truncate">1.2 Entendiendo UseEffect</p>
+                            <span class="text-[10px] text-accent/70 flex items-center gap-1 mt-0.5">
+                                <i class="fas fa-play"></i> 12:45 • Viendo ahora
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Lección Pendiente -->
+                    <a href="#" class="flex items-center gap-3 px-5 py-3 border-l-[3px] border-transparent hover:border-slate-600 hover:bg-slate-800/30 transition-colors group opacity-70 hover:opacity-100">
+                        <div class="flex-shrink-0 w-5 text-center">
+                            <i class="far fa-circle text-slate-600 group-hover:text-slate-400"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm text-slate-400 truncate group-hover:text-slate-200">1.3 Custom Hooks Pattern</p>
+                            <span class="text-[10px] text-slate-600 flex items-center gap-1 mt-0.5">
+                                <i class="far fa-play-circle"></i> 08:30
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Módulo 2: Cerrado -->
+            <div class="border-b border-slate-800/50">
+                <button class="w-full px-5 py-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors group opacity-80 hover:opacity-100">
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Módulo 2</p>
+                        <h3 class="text-sm font-semibold text-slate-300">Gestión de Estado Global</h3>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-600 group-hover:text-slate-400"></i>
+                </button>
+            </div>
+            
+             <!-- Módulo 3: Cerrado -->
+             <div class="border-b border-slate-800/50">
+                <button class="w-full px-5 py-4 flex items-center justify-between hover:bg-slate-800/30 transition-colors group opacity-80 hover:opacity-100">
+                    <div class="text-left">
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Módulo 3</p>
+                        <h3 class="text-sm font-semibold text-slate-300">Optimización y Rendimiento</h3>
+                    </div>
+                    <i class="fas fa-chevron-right text-slate-600 group-hover:text-slate-400"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer Sidebar -->
+        <div class="p-4 border-t border-slate-800 mt-auto bg-surface">
+            <button class="w-full py-2 px-4 rounded-lg border border-slate-700 hover:bg-slate-800 text-xs font-medium text-slate-300 flex items-center justify-center gap-2 transition-colors">
+                <i class="fas fa-certificate text-yellow-500"></i>
+                Solicitar Certificado
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT (DERECHA) - VIDEO & INFO -->
+    <main class="flex-1 flex flex-col h-full relative overflow-y-auto bg-midnight">
+        
+        <!-- Top Nav (Flotante) -->
+        <header class="w-full h-16 px-6 flex items-center justify-between border-b border-slate-800/50 bg-midnight/80 backdrop-blur-md sticky top-0 z-10">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center text-sm text-slate-400 gap-2">
+                <a href="#" class="hover:text-white transition-colors">Curso</a>
+                <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                <a href="#" class="hover:text-white transition-colors">Módulo 1</a>
+                <i class="fas fa-chevron-right text-[10px] opacity-50"></i>
+                <span class="text-accent font-medium">1.2 Entendiendo UseEffect</span>
+            </nav>
+
+            <!-- Acciones Derecha -->
+            <div class="flex items-center gap-4">
+                <button class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white hover:bg-slate-700 transition-all" title="Modo Oscuro/Claro">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="h-8 w-[1px] bg-slate-700"></div>
+                <button class="flex items-center gap-2 text-sm font-medium text-slate-300 hover:text-white transition-colors">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="User" class="w-8 h-8 rounded-full border-2 border-slate-700">
+                    <span class="hidden md:inline">Usuario Demo</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Contenido Central -->
+        <div class="flex-1 max-w-5xl mx-auto w-full p-6 md:p-8">
+            
+            <!-- Video Player Container (Aspect Ratio 16:9) -->
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden shadow-2xl video-glow mb-8 group border border-slate-800">
+                <!-- Simulación de Thumbnail/Video -->
+                <div class="absolute inset-0 flex items-center justify-center bg-gradient-to-t from-black/80 via-transparent to-black/20 z-10">
+                    <button class="w-16 h-16 md:w-20 md:h-20 bg-accent hover:bg-accent_hover text-white rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(56,189,248,0.6)] transform group-hover:scale-110 transition-all duration-300 backdrop-blur-sm bg-opacity-90">
+                        <i class="fas fa-play ml-1 text-2xl md:text-3xl"></i>
+                    </button>
+                </div>
+                <!-- Imagen de fondo fake -->
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:opacity-40 transition-opacity duration-500" alt="Video cover">
+                
+                <!-- Barra de control simulada -->
+                <div class="absolute bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-black to-transparent z-20 px-4 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div class="h-1 flex-1 bg-slate-700 rounded-full overflow-hidden cursor-pointer">
+                        <div class="h-full bg-red-600 w-1/3 relative"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Título y Botones de Acción -->
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-bold text-white mb-2">Entendiendo UseEffect y el Ciclo de Vida</h1>
+                    <p class="text-slate-400 text-sm">Publicado el 12 Oct, 2024 • Última actualización ayer</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-sm font-medium transition-colors border border-slate-700">
+                        <i class="far fa-heart mr-2 text-pink-500"></i> Favorito
+                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-accent text-sm font-medium transition-colors border border-accent/20">
+                        <i class="fas fa-check mr-2"></i> Completado
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tabs de Contenido -->
+            <div class="border-b border-slate-800 mb-6">
+                <nav class="flex gap-8" id="tabs-nav">
+                    <button class="pb-3 border-b-2 border-accent text-accent font-medium text-sm transition-colors tab-btn" data-target="desc">
+                        Descripción
+                    </button>
+                    <button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm transition-colors tab-btn" data-target="recursos">
+                        Recursos <span class="ml-1 px-1.5 py-0.5 bg-slate-800 rounded text-xs text-slate-500">3</span>
+                    </button>
+                    <button class="pb-3 border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-medium text-sm transition-colors tab-btn" data-target="comentarios">
+                        Comentarios
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Contenido de las Tabs -->
+            <div class="text-slate-300 leading-relaxed text-sm md:text-base min-h-[200px]">
+                
+                <!-- Tab: Descripción -->
+                <div id="desc" class="tab-content animate-fade-in">
+                    <p class="mb-4">En esta lección vamos a desmitificar el hook <code>useEffect</code>. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.</p>
+                    
+                    <h3 class="text-white font-semibold mt-6 mb-3 text-lg">Lo que aprenderás:</h3>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>Cómo reemplazar <code>componentDidMount</code> y <code>componentWillUnmount</code>.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>El arreglo de dependencias y sus trampas comunes.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-check text-green-500 mt-1"></i>
+                            <span>Funciones de limpieza (cleanup functions).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tab: Recursos (Oculto por defecto) -->
+                <div id="recursos" class="hidden tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="#" class="flex items-center p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:bg-slate-800 transition-colors group">
+                            <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mr-4 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">Código Fuente (GitHub)</h4>
+                                <p class="text-xs text-slate-500">Repositorio del proyecto final</p>
+                            </div>
+                            <i class="fas fa-external-link-alt ml-auto text-slate-600 group-hover:text-white"></i>
+                        </a>
+
+                        <a href="#" class="flex items-center p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:bg-slate-800 transition-colors group">
+                            <div class="w-10 h-10 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center text-xl mr-4 group-hover:bg-red-500 group-hover:text-white transition-all">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-medium">Slides de la clase</h4>
+                                <p class="text-xs text-slate-500">PDF • 2.4 MB</p>
+                            </div>
+                            <i class="fas fa-download ml-auto text-slate-600 group-hover:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Tab: Comentarios (Oculto) -->
+                <!-- <div id="comentarios" class="hidden tab-content">
+                    <div class="flex gap-4 mb-6">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="User" class="w-10 h-10 rounded-full border border-slate-700">
+                        <div class="flex-1">
+                            <textarea class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 text-sm focus:border-accent focus:ring-1 focus:ring-accent outline-none resize-none h-24" placeholder="Escribe una pregunta o comentario..."></textarea>
+                            <div class="flex justify-end mt-2">
+                                <button class="bg-accent hover:bg-accent_hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">Publicar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Comentario Ejemplo -->
+                    <div class="flex gap-4 p-4 rounded-lg hover:bg-slate-800/30 transition-colors">
+                        <img src="https://i.pravatar.cc/150?img=33" alt="User" class="w-10 h-10 rounded-full">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="font-semibold text-white text-sm">Sarah Connor</span>
+                                <span class="text-xs text-slate-500">hace 2 horas</span>
+                            </div>
+                            <p class="text-slate-300 text-sm">Excelente explicación sobre el array de dependencias, siempre me causaba loops infinitos. ¡Gracias!</p>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Script simple para Tabs -->
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remover clases activas de todos los botones
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('border-accent', 'text-accent');
+                    btn.classList.add('border-transparent', 'text-slate-400');
+                });
+                
+                // Activar botón clickeado
+                button.classList.remove('border-transparent', 'text-slate-400');
+                button.classList.add('border-accent', 'text-accent');
+                
+                // Ocultar todos los contenidos
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                
+                // Mostrar contenido target
+                const targetId = button.getAttribute('data-target');
+                document.getElementById(targetId).classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

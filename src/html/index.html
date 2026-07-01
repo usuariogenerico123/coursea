@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta Dolarizada - Curso de Seguridad Financiera</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Outfit', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        'crypto-dark': '#0B1120', // Fondo principal
+                        'crypto-card': '#1E293B', // Tarjetas
+                        'accent-green': '#10B981', // Acento principal (éxito/dinero)
+                        'accent-blue': '#3B82F6',  // Acento secundario
+                        'security-red': '#EF4444'  // Para el módulo de seguridad
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Efecto de resplandor en textos clave */
+        .text-glow {
+            text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+        }
+        /* Fondo con patrón sutil */
+        .hero-bg {
+            background-color: #0B1120;
+            background-image: radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.15) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-crypto-dark text-slate-300">
+
+    <nav class="fixed w-full top-0 z-50 bg-crypto-dark/80 backdrop-blur-lg border-b border-slate-800/50 py-4">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 font-black text-xl text-white tracking-wider">
+                <i class="fa-solid fa-shield-halved text-accent-green"></i>
+                RUTA<span class="text-accent-green">DOLARIZADA</span>
+            </div>
+            <div>
+                 <a href="aula.html" class="text-sm font-bold text-slate-300 hover:text-accent-green mr-6 transition hidden md:inline-block">
+                    <i class="fa-solid fa-right-to-bracket mr-2"></i>Area de Alumnos
+                </a>
+                 <a href="https://wa.me/TU_NUMERO" class="bg-accent-green/90 hover:bg-accent-green text-crypto-dark font-bold px-6 py-2 rounded-full text-sm transition-all hover:shadow-lg hover:shadow-accent-green/20">
+                    Empezar Ahora
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg min-h-[85vh] flex items-center pt-20 px-6 relative overflow-hidden">
+        <div class="absolute top-20 right-0 text-[200px] text-accent-green/5 -z-10"><i class="fa-brands fa-bitcoin"></i></div>
+        <div class="absolute bottom-20 left-10 text-[150px] text-accent-blue/5 -z-10"><i class="fa-solid fa-lock"></i></div>
+
+        <div class="max-w-5xl mx-auto text-center z-10">
+            <div class="inline-block border border-accent-green/30 rounded-full px-4 py-1 bg-accent-green/10 text-accent-green text-sm font-bold mb-8 tracking-wide">
+                <i class="fa-solid fa-circle-check mr-2 animate-pulse"></i> Sistema Actualizado 2024 - Sin Trading
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black text-white mb-8 leading-tight">
+                Tu dinero no puede seguir en
+                <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent-green to-accent-blue text-glow">
+                     Moneda Local Devaluada.
+                </span>
+            </h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
+                Aprende la ruta técnica exacta para comprar Dólares Digitales (USDT), guardarlos bajo tu propio control y gastarlos sin depender de los bancos.
+                <strong class="block mt-4 text-accent-green font-bold">Cero especulación. 100% Utilidad y Seguridad.</strong>
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="#ruta-aprendizaje" class="bg-accent-green hover:bg-accent-green/90 text-crypto-dark font-extrabold text-lg px-10 py-5 rounded-2xl transition-all transform hover:scale-105 shadow-xl shadow-accent-green/20">
+                    Ver la Ruta de Aprendizaje <i class="fa-solid fa-arrow-down ml-3 animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="ruta-aprendizaje" class="py-24 px-6 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black text-white uppercase tracking-wide mb-4">El Mapa del Curso</h2>
+                <p class="text-lg text-slate-400">5 pasos directos. Desde cero absoluto hasta la seguridad total.</p>
+            </div>
+
+            <div class="relative">
+                <div class="absolute left-4 md:left-1/2 h-full w-1 bg-slate-800/50 -ml-0.5 transform md:-translate-x-1/2"></div>
+
+                <div class="relative z-10 mb-12 md:mb-24">
+                    <div class="flex items-center flex-row md:flex-row-reverse">
+                         <div class="absolute left-4 md:left-1/2 -ml-2 md:-ml-3 w-6 h-6 bg-accent-blue border-4 border-crypto-dark rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+                        
+                        <div class="ml-16 md:ml-0 md:mr-auto md:w-5/12 bg-crypto-card p-6 rounded-2xl border border-slate-700/50 shadow-lg relative group hover:border-accent-blue/50 transition-all cursor-pointer">
+                             <div class="absolute -top-4 -left-4 w-12 h-12 bg-accent-blue flex items-center justify-center font-black text-xl text-white rounded-xl rotate-3 group-hover:rotate-0 transition">M1</div>
+                            
+                            <h3 class="text-2xl font-bold text-white mb-3 mt-2">Fundamentos del Dinero Digital</h3>
+                            <p class="text-slate-400 mb-4">Olvida la teoría aburrida. Entiende por qué USDT vale $1, qué es una "Red" de envío (ERC20/TRC20) y por qué no es lo mismo que Bitcoin.</p>
+                            <ul class="text-sm text-slate-500 space-y-2">
+                                <li><i class="fa-solid fa-check text-accent-blue mr-2"></i> Stablecoins vs. Volátiles</li>
+                                <li><i class="fa-solid fa-check text-accent-blue mr-2"></i> Cómo elegir la red correcta para no perder dinero.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mb-12 md:mb-24">
+                    <div class="flex items-center">
+                         <div class="absolute left-4 md:left-1/2 -ml-2 md:-ml-3 w-6 h-6 bg-accent-green border-4 border-crypto-dark rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
+                        
+                        <div class="ml-16 md:ml-auto md:w-5/12 bg-crypto-card p-6 rounded-2xl border border-slate-700/50 shadow-lg relative group hover:border-accent-green/50 transition-all cursor-pointer">
+                             <div class="absolute -top-4 -right-4 w-12 h-12 bg-accent-green flex items-center justify-center font-black text-xl text-crypto-dark rounded-xl -rotate-3 group-hover:rotate-0 transition">M2</div>
+                            
+                            <h3 class="text-2xl font-bold text-white mb-3 mt-2">La Operatoria: Comprar sin Miedo</h3>
+                            <p class="text-slate-400 mb-4">La parte práctica. Entramos a los Exchanges (Bybit/Binance) y aprendemos a usar el mercado P2P para cambiar tu moneda local por dólares.</p>
+                            <ul class="text-sm text-slate-500 space-y-2">
+                                <li><i class="fa-solid fa-check text-accent-green mr-2"></i> Filtrar comerciantes P2P verificados.</li>
+                                <li><i class="fa-solid fa-check text-accent-green mr-2"></i> El protocolo para evitar bloqueos bancarios.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mb-12 md:mb-24">
+                    <div class="flex items-center flex-row md:flex-row-reverse">
+                        <div class="absolute left-4 md:left-1/2 -ml-2 md:-ml-3 w-6 h-6 bg-accent-blue border-4 border-crypto-dark rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]"></div>
+                        <div class="ml-16 md:ml-0 md:mr-auto md:w-5/12 bg-crypto-card p-6 rounded-2xl border border-slate-700/50 shadow-lg relative group hover:border-accent-blue/50 transition-all cursor-pointer">
+                            <div class="absolute -top-4 -left-4 w-12 h-12 bg-accent-blue flex items-center justify-center font-black text-xl text-white rounded-xl rotate-3 group-hover:rotate-0 transition">M3</div>
+                            <h3 class="text-2xl font-bold text-white mb-3 mt-2">Autocustodia: Sé tu Propio Banco</h3>
+                            <p class="text-slate-400 mb-4">Si el dinero está en el Exchange, no es tuyo. Aprende a instalar y usar Wallets privadas (MetaMask/Trust) correctamente.</p>
+                             <ul class="text-sm text-slate-500 space-y-2">
+                                <li><i class="fa-solid fa-check text-accent-blue mr-2"></i> Creación de Frase Semilla.</li>
+                                <li><i class="fa-solid fa-check text-accent-blue mr-2"></i> Primera transferencia de prueba a tu bóveda.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10 mb-12 md:mb-24">
+                    <div class="flex items-center">
+                        <div class="absolute left-4 md:left-1/2 -ml-2 md:-ml-3 w-6 h-6 bg-accent-green border-4 border-crypto-dark rounded-full shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
+                        <div class="ml-16 md:ml-auto md:w-5/12 bg-crypto-card p-6 rounded-2xl border border-slate-700/50 shadow-lg relative group hover:border-accent-green/50 transition-all cursor-pointer">
+                            <div class="absolute -top-4 -right-4 w-12 h-12 bg-accent-green flex items-center justify-center font-black text-xl text-crypto-dark rounded-xl -rotate-3 group-hover:rotate-0 transition">M4</div>
+                            <h3 class="text-2xl font-bold text-white mb-3 mt-2">Utilidad: Gastar y Usar</h3>
+                            <p class="text-slate-400 mb-4">¿De qué sirve tener dólares si no los puedes usar? Aprende a conectarlos con el mundo real.</p>
+                             <ul class="text-sm text-slate-500 space-y-2">
+                                <li><i class="fa-solid fa-check text-accent-green mr-2"></i> Tarjetas Visa/Mastercard recargables con Crypto.</li>
+                                <li><i class="fa-solid fa-check text-accent-green mr-2"></i> Off-Ramp: Volver a moneda local cuando lo necesites.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="max-w-3xl mx-auto bg-crypto-card/50 p-8 rounded-3xl border-2 border-security-red/50 shadow-[0_0_30px_rgba(239,68,68,0.15)] relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-security-red via-transparent to-transparent"></div>
+                        
+                        <div class="relative z-20 text-center">
+                             <div class="w-20 h-20 bg-security-red mx-auto rounded-full flex items-center justify-center text-4xl text-white mb-6 shadow-lg shadow-security-red/30 animate-pulse">
+                                <i class="fa-solid fa-shield-virus"></i>
+                            </div>
+                            
+                            <h3 class="text-3xl font-black text-white mb-2 uppercase tracking-wider">Módulo 5: El Escudo Final</h3>
+                            <p class="text-security-red font-bold mb-6">Aspectos Críticos de Seguridad y Prevención de Fraudes</p>
+                            
+                            <p class="text-slate-300 mb-8 text-lg leading-relaxed">
+                                Este es el módulo más importante. Aquí aprenderás a blindarte contra los errores humanos y las estafas que hacen que la gente pierda su dinero. <strong class="text-white">Sin esto, nada de lo anterior importa.</strong>
+                            </p>
+
+                            <div class="grid sm:grid-cols-3 gap-4 text-left">
+                                <div class="bg-crypto-dark p-4 rounded-xl border border-slate-800 flex items-start gap-3">
+                                    <i class="fa-solid fa-triangle-exclamation text-security-red mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-white">Anti-Phishing</h4>
+                                        <p class="text-xs text-slate-500">Detectar sitios y correos falsos al instante.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-crypto-dark p-4 rounded-xl border border-slate-800 flex items-start gap-3">
+                                    <i class="fa-solid fa-mobile-screen-button text-security-red mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-white">Higiene Digital</h4>
+                                        <p class="text-xs text-slate-500">Autenticación 2FA correcta (No SMS) y gestores.</p>
+                                    </div>
+                                </div>
+                                <div class="bg-crypto-dark p-4 rounded-xl border border-slate-800 flex items-start gap-3">
+                                    <i class="fa-solid fa-user-secret text-security-red mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-white">Anti-Estafas</h4>
+                                        <p class="text-xs text-slate-500">Identificar esquemas Ponzi y promesas falsas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-gradient-to-b from-crypto-dark to-[#050914] border-t border-slate-800/50 px-6 text-center">
+        <h2 class="text-4xl font-black text-white mb-8">No esperes a la próxima devaluación.</h2>
+        <a href="https://wa.me/TU_NUMERO" class="inline-flex items-center gap-3 bg-accent-green hover:bg-accent-green/90 text-crypto-dark font-extrabold text-xl px-12 py-6 rounded-2xl transition-all transform hover:scale-105 shadow-2xl shadow-accent-green/30">
+            <i class="fa-brands fa-whatsapp text-2xl"></i>
+            Quiero Acceso al Curso y Soporte
+        </a>
+        <p class="text-slate-500 mt-6 text-sm">Pago único. Acceso de por vida a las actualizaciones.</p>
+    </section>
+
+</body>
+</html>

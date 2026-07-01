@@ -1,0 +1,231 @@
+
+{
+    "nombre_curso":"Uso de dolares digitales",
+    "nombre_tutor": "pancho tutor gato",
+    "video_presentacion":"https://player.vimeo.com/video/1151097711?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+    "descripcion_curso":"Aprende la ruta técnica exacta para comprar Dólares Digitales (USDT), guardarlos bajo tu propio control y gastarlos sin depender de los bancos.",
+    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+    ],
+    "modulos":
+    [   
+        {
+            "titulo_modulo":"Fundamentos del Dinero Digital",
+            "numero_modulo":1,
+            "descripcion_modulo": "Olvida la teoría aburrida. Entiende por qué USDT vale $1, qué es una Red' de envío (ERC20/TRC20) y por qué no es lo mismo que Bitcoin.",
+            "temas":[
+                {
+                    "id":"1.0",
+                    "titulo_tema":"Estable coins vs volatiles ",
+                    "url_video": "https://play.gumlet.io/embed/6958505e15b21a591c54c375",
+                    "duracion":0,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {   
+                    "id": "1.1",
+                    "titulo_tema":"Cómo elegir la red correcta para no perder dinero.",
+                    "url_video": "https://www.youtube.com/embed/WwTB2Y81InM?si=H7uHAPiaOcIz2dmK",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {   
+                    "id": "1.2",
+                    "titulo_tema":"Cómo elegir la red correcta para no perder dinero.",
+                    "url_video": "https://player.vimeo.com/video/1151097711?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                }
+                
+            ]
+    
+        },
+        {
+            "titulo_modulo":"La Operatoria: Comprar sin Miedo",
+            "numero_modulo":2,
+            "descripcion_modulo": "La parte práctica. Entramos a los Exchanges (Bybit/Binance) y aprendemos a usar el mercado P2P para cambiar tu moneda local por dólares..",
+            "temas":[
+                {
+                    "id":"2.0",
+                    "titulo_tema":"Filtrar comerciantes P2P verificados.",
+                    "url_video": "https://www.youtube.com/embed/Z-3su2ov8Vg?si=SucFmJNc10QHlTgM",
+                    "duracion":0,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {
+                    "id":"2.1",
+                    "titulo_tema":"El protocolo para evitar bloqueos bancarios.",
+                    "url_video": "https://www.youtube.com/embed/WwTB2Y81InM?si=H7uHAPiaOcIz2dmK",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                }
+            ]
+    
+        },
+        {
+            "titulo_modulo":"Autocustodia: Sé tu Propio Banco",
+            "numero_modulo":3,
+            "descripcion_modulo": "Si el dinero está en el Exchange, no es tuyo. Aprende a instalar y usar Wallets privadas (MetaMask/Trust) correctamente..",
+            "temas":[
+                {
+                    "id":"3.0",
+                    "titulo_tema":"Creación de Frase Semilla.",
+                    "url_video": "https://www.youtube.com/embed/Z-3su2ov8Vg?si=SucFmJNc10QHlTgM",
+                    "duracion":0,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {
+                    "id":"3.1",
+                    "titulo_tema":"Primera transferencia de prueba a tu bóveda.",
+                    "url_video": "https://www.youtube.com/embed/WwTB2Y81InM?si=H7uHAPiaOcIz2dmK",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                }
+            ]
+    
+        },
+
+
+        {
+            "titulo_modulo":"Utilidad: Gastar y Usar",
+            "numero_modulo":4,
+            "descripcion_modulo": "¿De qué sirve tener dólares si no los puedes usar? Aprende a conectarlos con el mundo real...",
+            "temas":[
+                {
+                    "id":"4.0",
+                    "titulo_tema":"Tarjetas Visa/Mastercard recargables con Crypto.",
+                    "url_video": "https://www.youtube.com/embed/Z-3su2ov8Vg?si=SucFmJNc10QHlTgM",
+                    "duracion":0,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {
+                    "id":"4.1",
+                    "titulo_tema":"Off-Ramp: Volver a moneda local cuando lo necesites.",
+                    "url_video": "https://www.youtube.com/embed/WwTB2Y81InM?si=H7uHAPiaOcIz2dmK",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                }
+            ]
+    
+        },
+
+
+        {
+            "titulo_modulo":"El escudo final",
+            "numero_modulo":5,
+            "descripcion_modulo": "Aspectos Críticos de Seguridad y Prevención de Fraudes Este es el módulo más importante. Aquí aprenderás a blindarte contra los errores humanos y las estafas que hacen que la gente pierda su dinero. Sin esto, nada de lo anterior importa",
+            "temas":[
+                {
+                    "id":"5.0",
+                    "titulo_tema":"Anti-Phishing",
+                    "url_video": "https://www.youtube.com/embed/Z-3su2ov8Vg?si=SucFmJNc10QHlTgM",
+                    "duracion":0,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {
+                    "id":"5.1",
+                    "titulo_tema":"Higiene Digital",
+                    "url_video": "https://www.youtube.com/embed/WwTB2Y81InM?si=H7uHAPiaOcIz2dmK",
+                    "duracion":23,
+                    "status":"termindado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+    
+                },
+                {
+                    "id":"5.2",
+                    "titulo_tema":"Anti-Estafas",
+                    "url_video":"https://www.youtube.com/embed/yfCZGk8eCUk?si=XqBroF8pzfOZolHa",
+                    "duracion": 0,
+                    "status": "terminado",
+                    "descripcion": "En esta lección vamos a desmitificar el hook useEffect. Es uno de los hooks más poderosos pero también más confusos para los principiantes. Aprenderemos cómo sincronizar nuestros componentes con sistemas externos.",
+                    "metas_aprendizaje":[
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions).",
+                        "Cómo reemplazar componentDidMount y componentWillUnmount.",
+                        "El arreglo de dependencias y sus trampas comunes.",
+                        "Funciones de limpieza (cleanup functions)."
+                    ]
+                }
+            ]
+    
+        }
+    ]
+
+}
