@@ -3,11 +3,9 @@ package controller
 import (
 	"course/internal/domain/course"
 	"course/internal/domain/interfaces"
-	"course/internal/domain/models"
 	"fmt"
 	"net/http"
 	"strconv"
-
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 )
@@ -24,11 +22,47 @@ func NewCourseController (serv interfaces.CourseServicesInterface)*CourseControl
 
 
 //-----GET-----
-func (c *CourseController )GetAll(h *gin.Context){
+func (c *CourseController )GetAllCourseById(h *gin.Context){
+	id := h.Param("id")
+	num, err := strconv.ParseUint(id, 10, 0)
+	if(err != nil){
+		fmt.Println(err)
+		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":err.Error()})
+		return
+	}
 
-	c.Serv.Service()
+	resp, er := c.Serv.GetAllCourseById(uint(num))
+	if(er != nil){
+		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":er.Error()})
+		return
+	}
+	h.IndentedJSON(http.StatusOK, gin.H{"data":resp})
 	
 }
+
+
+//----------GET------------
+func (c *CourseController)GetCourseById(h *gin.Context){
+
+	//id := h.Param("id")
+	id, err := strconv.ParseUint(h.Param("id"), 10, 0)
+	if(err != nil){
+		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":err.Error()})
+		return
+	}
+
+	resp, er := c.Serv.GetCourseById(uint(id))
+	if(er != nil){
+		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":er.Error()})
+		return
+	}
+
+	h.IndentedJSON(http.StatusOK, gin.H{"data":resp})
+
+}
+
+
+
 //----post
 func (c *CourseController)SaveCourse(h *gin.Context){
 	var courseData course.CourseInsertDTO 
@@ -94,11 +128,14 @@ func (c *CourseController)SaveTheme(h *gin.Context){
 		return
 	}
 
-	themeModel := &models.Tema{}
-	themeModel.AddTema()
+	resp, erro := c.Serv.SaveTheme(uint(id), themeInserData)
+	if(erro != nil){
+		fmt.Println(erro)
+		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":erro.Error()})
+		return
+	}
 
-
-
+	h.IndentedJSON(http.StatusCreated, gin.H{"data":resp})
 }
 
 

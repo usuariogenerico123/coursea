@@ -30,11 +30,10 @@ type TemaInsertDTO struct{
 
 	NumeroTema string 			`json:"numero_tema"`
 	TituloTema string 			`json:"titulo_tema"`
-	UrlVideo string 			`json:"url_vide"`
+	UrlVideo string 			`json:"url_video"`
 	Duracion int				`json:"duracion"`
 	Descriptcion string 		`json:"descripcion"`
 	MetasAprendizaje string		`json:"metas_aprendizaje"`				
-	ModuloID uint 				`json:"modulo_id"`
 
 }
 

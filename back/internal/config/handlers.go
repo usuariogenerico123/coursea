@@ -21,10 +21,11 @@ func LoadHandlers(courseController *controller.CourseController)(*gin.Engine ){
 
 	
 	api := routers.Group("/api")
-	api.GET("", courseController.GetAll)
+	//api.GET("/:id", courseController.GetAllCourseById)
+	api.GET("/course/:id", courseController.GetAllCourseById)
 	api.POST("/course", courseController.SaveCourse)
-	api.POST("/module/:idCourse", courseController.SaveModule)
-	api.POST("/theme/:idModule", courseController.SaveTheme)
+	api.POST("/course/module/:idCourse", courseController.SaveModule)
+	api.POST("/course/module/theme/:idModule", courseController.SaveTheme)
 	
 	
 	return routers

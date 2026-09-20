@@ -2,23 +2,19 @@ package models
 
 import (
 	"course/internal/domain/course"
-
 	"gorm.io/gorm"
 )
 
 
-type Course struct{
+type Curso struct{
 	gorm.Model
 	NombreCurso string 
 	NombreTutor string 
 	VideoPresentacion string 
 	MetasAprendizaje string
 	Modulos []Modulo
-	Admin Admin 
-	AdminID uint
-	
 }
-func (c *Course)AddData(courseData course.CourseInsertDTO)*Course{
+func (c *Curso)AddData(courseData course.CourseInsertDTO)*Curso{
 	c.NombreCurso = courseData.NombreCurso
 	c.NombreTutor = courseData.NombreTutor
 	c.VideoPresentacion = courseData.VideoPresentacion
@@ -28,22 +24,20 @@ func (c *Course)AddData(courseData course.CourseInsertDTO)*Course{
 
 
 
-
-
 type Modulo struct{
 	gorm.Model
 	TituloModulo string 
 	NumeroModulo int
 	DescripcionModulo string
-	CourseID uint
-	Course Course
+	CursoID uint
+	Curso Curso
 	Temas []Tema
 }
-func (m *Modulo)AddData (moduleData course.ModuloInserDTO)*Modulo{
+func (m *Modulo)AddData (courseId uint, moduleData course.ModuloInserDTO)*Modulo{
 	m.TituloModulo = moduleData.TituloModulo
 	m.NumeroModulo = moduleData.NumeroModulo
 	m.DescripcionModulo = moduleData.DescripcionModulo 
-	m.CourseID = moduleData.CourseID
+	m.CursoID = courseId
 	return m
 }
 
@@ -62,14 +56,14 @@ type Tema struct{
 	ModuloID uint
 
 }
-func (t *Tema)AddTema (dataTheme course.TemaInsertDTO)*Tema{
+func (t *Tema)AddTema (moduloId uint, dataTheme course.TemaInsertDTO)*Tema{
 	t.NumeroTema = dataTheme.NumeroTema
 	t.TituloTema = dataTheme.TituloTema
 	t.UrlVideo = dataTheme.UrlVideo
 	t.Duracion = dataTheme.Duracion
 	t.Descriptcion = dataTheme.Descriptcion
 	t.MetasAprendizaje = dataTheme.MetasAprendizaje
-	t.ModuloID = dataTheme.ModuloID
+	t.ModuloID = moduloId
 	return t
 }
 

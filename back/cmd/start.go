@@ -18,7 +18,7 @@ func Start(){
 	
 	port := ":3006"
 	DB = config.LoadDb()
-	DB.AutoMigrate(&models.Course{}, &models.Modulo{}, &models.Tema{})
+	DB.AutoMigrate(&models.Curso{}, &models.Modulo{}, &models.Tema{})
 
 	//--repository--
 	courseRepo := repository.NewCourseRepository(DB)

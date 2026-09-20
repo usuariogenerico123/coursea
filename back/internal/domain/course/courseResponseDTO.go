@@ -2,7 +2,7 @@ package course
 
 
 
-type CourseResponseDTO struct{
+type CursoResponseDTO struct{
 	Id uint 					`json:"id"`
 	NombreCurso string 			`json:"nombre_curso"`
 	NombreTutor string 			`json:"nombre_tutor"`
@@ -19,8 +19,8 @@ type ModuloResponseDTO struct{
 	TituloModulo string 		`json:"titulo_modulo"`
 	NumeroModulo int			`json:"numero_modulo"`
 	DescripcionModulo string	`json:"descripcion_modulo"`
-	CourseID uint				`json:"curso_id"`			
-	Temas []TemaResponseDTO		`json:"temas"`
+	CursoID uint				`json:"curso_id"`			
+	Temas []*TemaResponseDTO	`json:"temas"`
 }
 
 
@@ -28,7 +28,7 @@ type TemaResponseDTO struct{
 	Id uint 					`json:"id"`
 	NumeroTema string 			`json:"numero_tema"`
 	TituloTema string 			`json:"titulo_tema"`
-	UrlVideo string 			`json:"url_vide"`
+	UrlVideo string 			`json:"url_video"`
 	Duracion int				`json:"duracion"`
 	Descriptcion string 		`json:"descripcion"`
 	MetasAprendizaje string		`json:"metas_aprendizaje"`			

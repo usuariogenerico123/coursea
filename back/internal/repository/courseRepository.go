@@ -4,11 +4,8 @@ import (
 	"course/internal/domain/interfaces"
 	"course/internal/domain/models"
 	"errors"
-
 	"gorm.io/gorm"
 )
-
-
 
 
 type CourseRepository struct{
@@ -21,9 +18,35 @@ func NewCourseRepository(db *gorm.DB)interfaces.CourseRepositoryInterface{
 }
 
 
-func (c *CourseRepository)GetCourseById(courseId uint)(*models.Course, error){
-	var courseModel models.Course
-	resp := c.Db.Where("id = ?", courseId).First(&courseModel)
+
+
+func (c *CourseRepository)GetAllCourseById(id uint)(*models.Curso, error){
+	var courseModel models.Curso
+	resp := c.Db.Preload("Modulos").Preload("Modulos.Temas").First(&courseModel, id)
+	if(resp.Error != nil){
+		return nil, resp.Error
+	}
+	return &courseModel, nil
+}
+
+
+func (c *CourseRepository)GetModuleById(id uint)(*models.Modulo, error){
+	var moduleModel models.Modulo
+	resp := c.Db.Where("id = ?", id).First(&moduleModel)
+	if(errors.Is(resp.Error, gorm.ErrRecordNotFound)){
+		return nil, errors.New("Module not found")
+	}
+
+	if(resp.Error != nil){
+		return nil, resp.Error
+	}
+	return &moduleModel, nil
+}
+
+
+func (c *CourseRepository)GetCourseById(id uint)(*models.Curso, error){
+	var courseModel models.Curso
+	resp := c.Db.Where("id = ?", id).First(&courseModel)
 	
 	if(errors.Is(resp.Error, gorm.ErrRecordNotFound)){
 		return nil, gorm.ErrRecordNotFound
@@ -35,17 +58,10 @@ func (c *CourseRepository)GetCourseById(courseId uint)(*models.Course, error){
 
 }
 
-func(c *CourseRepository)GetAllItems()(*models.Course, error){
-	var course models.Course 
-	resp := c.Db.Preload("Modulos").Preload("Modulos.Temas").First(&course)
-	if(resp.Error != nil){
-		return nil, resp.Error
-	}
-	return  &course, nil
-}
 
 
-func (c *CourseRepository) SaveCourse(course *models.Course)error{
+
+func (c *CourseRepository) SaveCourse(course *models.Curso)error{
 
 	resp := c.Db.Save(course)
 	if (resp != nil){
@@ -64,6 +80,14 @@ func (c *CourseRepository) SaveModule(module *models.Modulo)error{
 }
 func (c *CourseRepository) SaveTheme(theme *models.Tema)error{
 	
+	resp := c.Db.Save(theme)
+	if(errors.Is(resp.Error, gorm.ErrRecordNotFound)){
+		return errors.New("Module not found")
+	}
+
+	if(resp.Error != nil){
+		return resp.Error
+	}
 	return nil
 }
 
