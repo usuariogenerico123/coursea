@@ -14,7 +14,7 @@ import (
 func LoadDb()*gorm.DB{
 	
 
-	dsnExample := "host=aws-0-us-west-2.pooler.supabase.com user=postgres.lftdvguedwvmciuyajvl password=[password] dbname=postgres port=5432 "
+	dsnExample := "host=aws-0-us-west-2.pooler.supabase.com user=postgres.lftdvguedwvmciuyajvl password=Manchoso_123 dbname=postgres port=5432 "
 	// dsn := os.Getenv("URL_DB")
 	// if(len(dsn) == 0){
 	// 	panic("No se pudo cargar variable de entorno URL_DB")

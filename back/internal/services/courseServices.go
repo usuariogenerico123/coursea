@@ -165,6 +165,33 @@ func (c *CourseServices)SaveTheme(moduleId uint, themeData course.TemaInsertDTO)
 }
 
 
+func (c *CourseServices) UpdateCourse(courseId uint, dataCourse *course.CourseInsertDTO)(*course.CursoResponseDTO, error){
+	
+	courseModel, err := c.Repo.GetCourseById(courseId)
+	if(err != nil){
+		return nil, err
+	}
+	courseModel.Update(*dataCourse)
+	resp := c.Repo.UpdateCourse(courseId, courseModel)
+	if(resp != nil){
+		return nil, resp
+	}
+
+	courseResponse := course.CursoResponseDTO{
+		NombreCurso: courseModel.NombreCurso,
+		NombreTutor: courseModel.NombreTutor,
+		VideoPresentacion: courseModel.VideoPresentacion,
+		MetasAprendizaje: courseModel.MetasAprendizaje,
+	}
+	return &courseResponse, nil
+}
+func (c *CourseServices) UpdateModule(moduleId uint, dataModule *course.ModuloInserDTO)(*course.ModuloResponseDTO, error){
+	return nil, nil
+}
+func (c *CourseServices) UpdateTheme(themeId uint, dataTheme *course.TemaInsertDTO)(*course.TemaResponseDTO, error){
+	return nil, nil
+}
+
 
 
 

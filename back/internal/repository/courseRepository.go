@@ -91,3 +91,26 @@ func (c *CourseRepository) SaveTheme(theme *models.Tema)error{
 	return nil
 }
 
+
+
+func (c *CourseRepository) UpdateCourse(id uint, course *models.Curso)error{
+	resp := c.Db.Model(&models.Curso{}).Where("id = ?", id).Updates(course)
+	if(resp.Error != nil){
+		return resp.Error
+	}
+	return nil
+}
+func (c *CourseRepository) UpdateModule(id uint, module *models.Modulo)error{
+	resp := c.Db.Model(&models.Modulo{}).Where("id = ?", id).Updates(module)
+	if(resp.Error != nil){
+		return resp.Error
+	}
+	return nil
+}
+func (c *CourseRepository) UpdateTheme(id uint, theme *models.Tema)error{
+	resp := c.Db.Model(&models.Tema{}).Where("id = ?", id).Updates(theme)
+	if(resp.Error != nil){
+		return resp.Error
+	}
+	return nil
+}

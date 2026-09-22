@@ -21,6 +21,21 @@ func (c *Curso)AddData(courseData course.CourseInsertDTO)*Curso{
 	c.MetasAprendizaje = courseData.MetasAprendizaje
 	return c
 }
+func (c *Curso) Update(data course.CourseInsertDTO)*Curso{
+
+	c.NombreCurso = data.NombreCurso
+	c.NombreTutor = data.NombreTutor
+	c.VideoPresentacion = data.VideoPresentacion
+	c.MetasAprendizaje = data.MetasAprendizaje
+
+	return c
+}
+func (c *Curso)verifyBlank(old string, new string)string{
+	if(new == ""){
+		return old
+	}
+	return new
+}
 
 
 

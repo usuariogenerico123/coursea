@@ -11,6 +11,9 @@ type CourseRepositoryInterface interface{
 	SaveCourse(*models.Curso)error
 	SaveModule(module *models.Modulo)error
 	SaveTheme(theme *models.Tema)error
-
+	UpdateCourse(id uint, course *models.Curso)error
+	UpdateModule(id uint, module *models.Modulo)error
+	UpdateTheme(id uint, theme *models.Tema)error
+	
 }
 
