@@ -8,6 +8,7 @@ import (
 )
 
 
+
 type CourseRepository struct{
 	Db *gorm.DB
 }
@@ -91,8 +92,6 @@ func (c *CourseRepository) SaveTheme(theme *models.Tema)error{
 	return nil
 }
 
-
-
 func (c *CourseRepository) UpdateCourse(id uint, course *models.Curso)error{
 	resp := c.Db.Model(&models.Curso{}).Where("id = ?", id).Updates(course)
 	if(resp.Error != nil){
@@ -111,6 +110,45 @@ func (c *CourseRepository) UpdateTheme(id uint, theme *models.Tema)error{
 	resp := c.Db.Model(&models.Tema{}).Where("id = ?", id).Updates(theme)
 	if(resp.Error != nil){
 		return resp.Error
+	}
+	return nil
+}
+
+
+func(c *CourseRepository)DeleteCourseById(id uint)error{
+	var courseModel models.Curso
+	resp := c.Db.Where("id = ?", id).First(&courseModel)
+	if(resp.Error != nil){
+		return resp.Error
+	}
+	if del := c.Db.Delete(&courseModel); del.Error != nil {
+		return del.Error
+	}
+	return nil
+
+}
+
+func (c *CourseRepository) DeleteModuleById(id uint)error {
+	var moduleModel models.Modulo
+	if module := c.Db.Where("id = ?", id).First(&moduleModel); module.Error != nil{
+		return module.Error
+	}
+
+	if del := c.Db.Delete(&moduleModel); del.Error != nil{
+		return del.Error
+	}
+	return nil
+
+
+}
+
+func (c *CourseRepository)DeleteThemeById(id uint)error{
+	var themeModel models.Tema
+	if resp := c.Db.Where("id = ?", id).First(themeModel); resp.Error != nil{
+		return resp.Error
+	}
+	if del := c.Db.Delete(&themeModel); del.Error != nil{
+		return del.Error
 	}
 	return nil
 }

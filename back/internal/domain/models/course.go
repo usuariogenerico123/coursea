@@ -12,7 +12,7 @@ type Curso struct{
 	NombreTutor string 
 	VideoPresentacion string 
 	MetasAprendizaje string
-	Modulos []Modulo
+	Modulos []Modulo `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 }
 func (c *Curso)AddData(courseData course.CourseInsertDTO)*Curso{
 	c.NombreCurso = courseData.NombreCurso
@@ -46,7 +46,7 @@ type Modulo struct{
 	DescripcionModulo string
 	CursoID uint
 	Curso Curso
-	Temas []Tema
+	Temas []Tema `gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE"`
 }
 func (m *Modulo)AddData (courseId uint, moduleData course.ModuloInserDTO)*Modulo{
 	m.TituloModulo = moduleData.TituloModulo

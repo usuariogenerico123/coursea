@@ -45,7 +45,15 @@ func (m *MockCourseRepository)UpdateModule(id uint, module *models.Modulo)error{
 func (m *MockCourseRepository)UpdateTheme(id uint, theme *models.Tema)error{
 	return nil
 }
-
+func (m *MockCourseRepository)DeleteCourseById(id uint)error{
+	return nil
+}
+func (m *MockCourseRepository)DeleteModuleById(id uint)error{
+	return nil
+}
+func (m *MockCourseRepository)DeleteThemeById(id uint)error{
+	return nil
+}
 
 
 //---------------test---------------
