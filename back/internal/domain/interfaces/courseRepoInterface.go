@@ -6,6 +6,7 @@ type CourseRepositoryInterface interface{
 
 
 	GetAllCourseById(id uint)(*models.Curso, error)
+	GetThemeById(id uint)(*models.Tema, error)
 	GetModuleById(id uint)(*models.Modulo, error)
 	GetCourseById(id uint)(*models.Curso, error)
 	SaveCourse(*models.Curso)error

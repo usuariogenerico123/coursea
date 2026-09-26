@@ -55,7 +55,14 @@ func (m *Modulo)AddData (courseId uint, moduleData course.ModuloInserDTO)*Modulo
 	m.CursoID = courseId
 	return m
 }
+func (m *Modulo) Update(data course.ModuloInserDTO)*Modulo{
 
+	m.TituloModulo = data.TituloModulo
+	m.NumeroModulo = data.NumeroModulo
+	m.DescripcionModulo = data.DescripcionModulo
+
+	return m
+}
 
 
 type Tema struct{
@@ -79,6 +86,17 @@ func (t *Tema)AddTema (moduloId uint, dataTheme course.TemaInsertDTO)*Tema{
 	t.Descriptcion = dataTheme.Descriptcion
 	t.MetasAprendizaje = dataTheme.MetasAprendizaje
 	t.ModuloID = moduloId
+	return t
+}
+func (t *Tema) Update(data course.TemaInsertDTO)*Tema{
+
+	t.NumeroTema = data.NumeroTema
+	t.TituloTema = data.TituloTema
+	t.UrlVideo = data.UrlVideo
+	t.Duracion = data.Duracion
+	t.Descriptcion = data.Descriptcion
+	t.MetasAprendizaje = data.MetasAprendizaje
+
 	return t
 }
 

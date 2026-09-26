@@ -58,7 +58,16 @@ func (c *CourseRepository)GetCourseById(id uint)(*models.Curso, error){
 	return &courseModel, nil
 
 }
+func (c *CourseRepository) GetThemeById(id uint)(*models.Tema, error){
+	var themeModel models.Tema
 
+	resp := c.Db.Where("id = ?", id).First(&themeModel)
+	if(resp.Error != nil){
+		return nil, resp.Error
+	}
+	return &themeModel, nil
+
+}
 
 
 

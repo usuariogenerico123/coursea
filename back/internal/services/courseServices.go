@@ -186,9 +186,34 @@ func (c *CourseServices) UpdateCourse(courseId uint, dataCourse *course.CourseIn
 	return &courseResponse, nil
 }
 func (c *CourseServices) UpdateModule(moduleId uint, dataModule *course.ModuloInserDTO)(*course.ModuloResponseDTO, error){
+
+	resp, err := c.Repo.GetModuleById(moduleId)
+	if(err != nil){
+		return nil, err
+	}
+	resp.Update(*dataModule)
+	if update := c.Repo.UpdateModule(moduleId, resp); update != nil{
+		return nil, update
+	}
+	
+	courseResponse
+
+	
 	return nil, nil
 }
 func (c *CourseServices) UpdateTheme(themeId uint, dataTheme *course.TemaInsertDTO)(*course.TemaResponseDTO, error){
+
+	tema, err := c.Repo.GetThemeById(themeId)
+	if(err != nil){
+		return nil, err
+	}
+	tema.Update(*dataTheme)
+
+	if resp := c.Repo.UpdateTheme(themeId, tema); resp != nil{
+		return nil, resp
+	}
+
+
 	return nil, nil
 }
 
