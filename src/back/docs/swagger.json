@@ -1,0 +1,67 @@
+{
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "API de mi plataforma (frontend + panel admin)",
+        "title": "Mi API Backend",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Soporte",
+            "email": "soporte@tudominio.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "898181bd208f9b6f-74-249-85-201.serveousercontent.com",
+    "basePath": "/api/course",
+    "paths": {
+        "/{id}": {
+            "get": {
+                "description": "Devuelve todo el curso asociados a un ID específico",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "courses"
+                ],
+                "summary": "Obtener curso por ID",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "ID del recurso",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de cursos",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": true
+                        }
+                    },
+                    "400": {
+                        "description": "Error de validación o de negocio",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

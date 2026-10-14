@@ -75,7 +75,7 @@ func (c *CourseServices)GetCourseById(id uint)(*models.Curso, error){
 		fmt.Println(erro)
 		return nil, erro
 	}
-	fmt.Println(resp)
+	//fmt.Println(resp)
 	return resp, nil
 
 }
@@ -196,10 +196,15 @@ func (c *CourseServices) UpdateModule(moduleId uint, dataModule *course.ModuloIn
 		return nil, update
 	}
 	
-	courseResponse
-
+	courseResponse := course.ModuloResponseDTO{
+		Id : resp.ID,
+		TituloModulo: resp.TituloModulo,
+		NumeroModulo: resp.NumeroModulo,
+		DescripcionModulo: resp.DescripcionModulo,
+		
+	}
 	
-	return nil, nil
+	return &courseResponse, nil
 }
 func (c *CourseServices) UpdateTheme(themeId uint, dataTheme *course.TemaInsertDTO)(*course.TemaResponseDTO, error){
 
@@ -216,6 +221,46 @@ func (c *CourseServices) UpdateTheme(themeId uint, dataTheme *course.TemaInsertD
 
 	return nil, nil
 }
+
+func (c *CourseServices)DeleteCourse(id uint)error{
+
+	_ , err := c.Repo.GetCourseById(id)
+	if( err != nil){
+		return err
+	}
+	if resp := c.Repo.DeleteCourseById(id); resp !=nil{
+		return resp
+	}
+	return nil
+
+
+}
+
+func (c *CourseServices) DeleteModule(id uint)error{
+	_, err := c.Repo.GetModuleById(id)
+	if( err != nil){
+		return err
+	}
+	if rep := c.Repo.DeleteModuleById(id); rep != nil{
+		return rep
+	}
+	return nil
+}
+
+func (c *CourseServices) DeleteTheme(id uint)error{
+	_, err := c.Repo.GetThemeById(id)
+
+	if(err != nil){
+		return err
+	}
+	if resp := c.Repo.DeleteThemeById(id); resp != nil{
+		return resp
+	}
+	return nil
+}
+
+
+
 
 
 

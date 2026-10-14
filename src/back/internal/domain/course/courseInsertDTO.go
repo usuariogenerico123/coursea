@@ -2,37 +2,38 @@ package course
 
 
 
-type CursoResponseDTO struct{
-	Id uint 					`json:"id"`
+
+
+type CourseInsertDTO struct{
+	
 	NombreCurso string 			`json:"nombre_curso"`
 	NombreTutor string 			`json:"nombre_tutor"`
 	VideoPresentacion string 	`json:"video_presentacion"`
 	MetasAprendizaje string		`json:"metas_aprendizaje"`
-	AdminID uint				`json:"admin_id"`
-	Modulos []ModuloResponseDTO `json:"modulos"`
+	
+	Modulos []ModuloInserDTO 	`json:"modulos"`
 	
 }
 
 
-type ModuloResponseDTO struct{
-	Id uint 					`json:"id"`
+type ModuloInserDTO struct{
+
 	TituloModulo string 		`json:"titulo_modulo"`
 	NumeroModulo int			`json:"numero_modulo"`
 	DescripcionModulo string	`json:"descripcion_modulo"`
-	CursoID uint				`json:"curso_id"`			
-	Temas []*TemaResponseDTO	`json:"temas"`
+	CourseID uint				`json:"course_id"`
+	Temas []TemaInsertDTO		`json:"temas"`
 }
 
 
-type TemaResponseDTO struct{
-	Id uint 					`json:"id"`
+type TemaInsertDTO struct{
+
 	NumeroTema string 			`json:"numero_tema"`
 	TituloTema string 			`json:"titulo_tema"`
 	UrlVideo string 			`json:"url_video"`
-	Duracion int				`json:"duracion"`
+	Duracion string				`json:"duracion"`
 	Descriptcion string 		`json:"descripcion"`
-	MetasAprendizaje string		`json:"metas_aprendizaje"`			
-	ModuloID uint				`json:"modulo_id"`
+	MetasAprendizaje string		`json:"metas_aprendizaje"`				
 
 }
 

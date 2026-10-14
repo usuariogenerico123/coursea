@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel de Administración - Cursos</title>
+<link rel="stylesheet" href="./style/index.css">
+</head>
+<body>
+
+        <header>
+        <h1>Panel de Administración</h1>
+        <button class="addCourse secondary" onclick="addCourse()">+ Nuevo Curso</button>
+        </header>
+
+        <div class="container">
+        <aside>
+            <h2>Cursos</h2>
+            <div id="courseList"></div>
+        </aside>
+        <main id="mainContent">
+            <div class="empty">Selecciona un curso para administrarlo</div>
+        </main>
+        </div>
+
+        <div class="modal" id="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Título</h3>
+            <div id="modalBody"></div>
+            <div class="modal-actions">
+            <button class="closeModal secondary">Cancelar</button>
+            <button id="modalSave">Guardar</button>
+            </div>
+        </div>
+        </div>
+
+<script type="module" src="./scripts/index.js"></script>
+</body>
+</html>

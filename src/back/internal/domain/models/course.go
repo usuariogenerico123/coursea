@@ -71,7 +71,7 @@ type Tema struct{
 	NumeroTema string 
 	TituloTema string 
 	UrlVideo string 
-	Duracion int
+	Duracion string
 	Descriptcion string 
 	MetasAprendizaje string
 	Modulo Modulo

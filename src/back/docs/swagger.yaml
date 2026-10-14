@@ -1,0 +1,46 @@
+basePath: /api/course
+host: 898181bd208f9b6f-74-249-85-201.serveousercontent.com
+info:
+  contact:
+    email: soporte@tudominio.com
+    name: Soporte
+  description: API de mi plataforma (frontend + panel admin)
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Mi API Backend
+  version: "1.0"
+paths:
+  /{id}:
+    get:
+      consumes:
+      - application/json
+      description: Devuelve todo el curso asociados a un ID específico
+      parameters:
+      - description: ID del recurso
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lista de cursos
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Error de validación o de negocio
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Obtener curso por ID
+      tags:
+      - courses
+schemes:
+- http
+- https
+swagger: "2.0"

@@ -16,7 +16,9 @@ type CourseServicesInterface interface{
 	UpdateCourse(courseId uint, dataCourse *course.CourseInsertDTO)(*course.CursoResponseDTO, error)
 	UpdateModule(moduleId uint, dataModule *course.ModuloInserDTO)(*course.ModuloResponseDTO, error)
 	UpdateTheme(themeId uint, dataTheme *course.TemaInsertDTO)(*course.TemaResponseDTO, error)
-	
+	DeleteCourse(id uint)error
+	DeleteModule(id uint)error
+	DeleteTheme(id uint)error
 
 }	
 
