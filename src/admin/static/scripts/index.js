@@ -91,26 +91,7 @@ async function renderCourseList() {
 }
 
 
-// function selectCourse(){
-//   document.querySelectorAll(".course-item").forEach(c =>{
-//       c.addEventListener("click", ()=>{
-//         console.log(c.id);
-//         // selectedCourseId = id;
-//         // renderCourseList();
-//       // renderMain();
-//       })
-//   })
-// }
-
-// items.forEach(c => {
-//   c.addEventListener("click", selectCourse(c.id));
-// })
-function selectCourse(id) {
-  console.log('sad');
-  // selectedCourseId = id;
-  // renderCourseList();
-  // renderMain();
-}
+// MODIFICADO: eliminado código muerto (selectCourse y los bloques comentados que usaban el onclick inline).
 
 function getCourse(id) { 
   console.log("get course by id");
@@ -138,7 +119,8 @@ function renderMain() {
           <span>${course.modulos.reduce((a,m)=>a+m.temas.length,0)} tema(s)</span>
         </div>
       </div>
-      <button onclick="addModule(${course.id})">+ Añadir Módulo</button>
+      <!-- MODIFICADO: onclick inline reemplazado por data-action (patrón de renderCourseList) -->
+      <button data-action="add-module" data-course="${course.id}">+ Añadir Módulo</button>
     </div>
     ${course.modulos.length === 0 ? '<div class="empty">No hay módulos. Añade el primero.</div>' :
       course.modulos.map(m => `
@@ -149,9 +131,9 @@ function renderMain() {
               <small>${m.descripcion_modulo}</small>
             </div>
             <div class="module-actions">
-              <button class="secondary small" onclick="editModule(${course.id}, ${m.id})">Editar</button>
-              <button class="danger small" onclick="deleteModule(${course.id}, ${m.id})">Eliminar</button>
-              <button class="small" onclick="addTopic(${course.id}, ${m.id})">+ Tema</button>
+              <button class="secondary small" data-action="edit-module" data-course="${course.id}" data-module="${m.id}">Editar</button>
+              <button class="danger small" data-action="delete-module" data-course="${course.id}" data-module="${m.id}">Eliminar</button>
+              <button class="small" data-action="add-topic" data-course="${course.id}" data-module="${m.id}">+ Tema</button>
             </div>
           </div>
           <div class="topics">
@@ -163,8 +145,8 @@ function renderMain() {
                     <small>${t.duracion} min</small>
                   </div>
                   <div class="topic-actions">
-                    <button class="secondary small" onclick="editTopic(${course.id}, ${m.id}, ${t.id})">Editar</button>
-                    <button class="danger small" onclick="deleteTopic(${course.id}, ${m.id}, ${t.id})">Eliminar</button>
+                    <button class="secondary small" data-action="edit-topic" data-course="${course.id}" data-module="${m.id}" data-topic="${t.id}">Editar</button>
+                    <button class="danger small" data-action="delete-topic" data-course="${course.id}" data-module="${m.id}" data-topic="${t.id}">Eliminar</button>
                   </div>
                 </div>
               `).join('')
@@ -174,6 +156,23 @@ function renderMain() {
       `).join('')
     }
   `;
+
+  // MODIFICADO: listeners enganchados tras pintar el HTML (patrón de renderCourseList).
+  // Los ids de dataset llegan como string, por eso se convierten con Number()
+  // para que funcionen los === de addModule/editModule/deleteModule/addTopic/editTopic/deleteTopic.
+  main.querySelectorAll("[data-action]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const { action, course, module: moduleId, topic } = btn.dataset;
+      switch (action) {
+        case "add-module":    addModule(Number(course)); break;
+        case "edit-module":   editModule(Number(course), Number(moduleId)); break;
+        case "delete-module": deleteModule(Number(course), Number(moduleId)); break;
+        case "add-topic":     addTopic(Number(course), Number(moduleId)); break;
+        case "edit-topic":    editTopic(Number(course), Number(moduleId), Number(topic)); break;
+        case "delete-topic":  deleteTopic(Number(course), Number(moduleId), Number(topic)); break;
+      }
+    });
+  });
 }
 
 function openModal(title, body, onSave) {
@@ -250,6 +249,7 @@ function editModule(courseId, moduleId) {
 }
 
 function deleteModule(courseId, moduleId) {
+  console.log("deleteModule", "courseId:", courseId, typeof courseId, "moduleId:", moduleId, typeof moduleId);
   if (!confirm('¿Eliminar este módulo y todos sus temas?')) return;
   const course = getCourse(courseId);
   course.modulos = course.modulos.filter(m => m.id !== moduleId);
@@ -306,6 +306,7 @@ function editTopic(courseId, moduleId, topicId) {
 }
 
 function deleteTopic(courseId, moduleId, topicId) {
+  console.log("deleteTopic", "courseId:", courseId, typeof courseId, "moduleId:", moduleId, typeof moduleId, "topicId:", topicId, typeof topicId);
   if (!confirm('¿Eliminar este tema?')) return;
   const course = getCourse(courseId);
   const m = course.modulos.find(x => x.id === moduleId);
