@@ -193,7 +193,7 @@ function addCourse() {
     <div class="form-row"><label>Tutor</label><input id="f_tutor" type="text"></div>
     <div class="form-row"><label>Video presentación (URL)</label><input id="f_video" type="text"></div>
     <div class="form-row"><label>Metas de aprendizaje</label><textarea id="f_metas"></textarea></div>
-  `, () => {
+  `, async () => { // nuevo: callback async para poder esperar la respuesta de la API
     const nuevo = {
       id: nextId++,
       nombre_curso: document.getElementById('f_nombre').value || 'Sin nombre',
@@ -205,6 +205,13 @@ function addCourse() {
     };
     data.push(nuevo);
     selectedCourseId = nuevo.id;
+    const resp = await api.saveCourse(nuevo); // nuevo: guarda el curso en el backend con saveCourse de api.js
+    if (resp.ok) { // nuevo: saveCourse devuelve { ok: true, data } cuando el status fue 201
+      console.log("Curso guardado:", resp.data);
+    } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+      console.log("Error al guardar el curso:", resp.data);
+      return; // nuevo: si falla, no se cierra el modal ni se re-renderiza
+    }
     closeModal();
     renderCourseList();
     renderMain();
@@ -217,8 +224,8 @@ function addModule(courseId) {
     <div class="form-row"><label>Número de módulo</label><input id="f_num" type="number" value="${course.modulos.length + 1}"></div>
     <div class="form-row"><label>Título</label><input id="f_titulo" type="text"></div>
     <div class="form-row"><label>Descripción</label><textarea id="f_desc"></textarea></div>
-  `, () => {
-    course.modulos.push({
+  `, async () => {
+    const nuevoModulo = {
       
       id: nextId++,
       numero_modulo: parseInt(document.getElementById('f_num').value) || 1,
@@ -226,7 +233,15 @@ function addModule(courseId) {
       descripcion_modulo: document.getElementById('f_desc').value || '',
       curso_id: courseId,
       temas: []
-    });
+    };
+    course.modulos.push(nuevoModulo);
+    const resp = await api.saveModule(courseId, nuevoModulo); // nuevo: guarda el módulo en el backend con saveModule de api.js
+    if (resp.ok) { // nuevo: saveModule devuelve { ok: true, data } cuando el status fue 201
+      console.log("Módulo guardado:", resp.data);
+    } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+      console.log("Error al guardar el módulo:", resp.data);
+      return
+    }
     closeModal();
     renderMain();
   });
@@ -239,20 +254,34 @@ function editModule(courseId, moduleId) {
     <div class="form-row"><label>Número de módulo</label><input id="f_num" type="number" value="${m.numero_modulo}"></div>
     <div class="form-row"><label>Título</label><input id="f_titulo" type="text" value="${m.titulo_modulo}"></div>
     <div class="form-row"><label>Descripción</label><textarea id="f_desc">${m.descripcion_modulo}</textarea></div>
-  `, () => {
+  `, async () => { // nuevo: callback async para poder esperar la respuesta de la API
     m.numero_modulo = parseInt(document.getElementById('f_num').value) || m.numero_modulo;
     m.titulo_modulo = document.getElementById('f_titulo').value || m.titulo_modulo;
     m.descripcion_modulo = document.getElementById('f_desc').value;
+    const resp = await api.updateModule(moduleId, m); // nuevo: actualiza el módulo en el backend con updateModule de api.js
+    if (resp.ok) { // nuevo: updateModule devuelve { ok: true, data } cuando el status fue 200
+      console.log("Módulo actualizado:", resp.data);
+    } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+      console.log("Error al actualizar el módulo:", resp.data);
+      return; // nuevo: si falla, no se cierra el modal ni se re-renderiza
+    }
     closeModal();
     renderMain();
   });
 }
 
-function deleteModule(courseId, moduleId) {
+async function deleteModule(courseId, moduleId) { // nuevo: ahora es async para poder esperar la respuesta de la API
   console.log("deleteModule", "courseId:", courseId, typeof courseId, "moduleId:", moduleId, typeof moduleId);
   if (!confirm('¿Eliminar este módulo y todos sus temas?')) return;
   const course = getCourse(courseId);
   course.modulos = course.modulos.filter(m => m.id !== moduleId);
+  const resp = await api.deleteModule(moduleId); // nuevo: elimina el módulo en el backend con deleteModule de api.js
+  if (resp.ok) { // nuevo: deleteModule devuelve { ok: true, data } cuando el status fue 204
+    console.log("Módulo eliminado:", resp.data);
+  } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+    console.log("Error al eliminar el módulo:", resp.data);
+    return; // nuevo: si falla, no se re-renderiza
+  }
   renderMain();
 }
 
@@ -266,8 +295,8 @@ function addTopic(courseId, moduleId) {
     <div class="form-row"><label>URL del video</label><input id="f_url" type="text"></div>
     <div class="form-row"><label>Descripción</label><textarea id="f_desc"></textarea></div>
     <div class="form-row"><label>Metas de aprendizaje</label><textarea id="f_metas"></textarea></div>
-  `, () => {
-    m.temas.push({
+  `, async () => { // nuevo: callback async para poder esperar la respuesta de la API
+    const nuevoTema = { // nuevo: se extrae el tema a una variable para poder enviarlo a la API
       id: nextId++,
       numero_tema: document.getElementById('f_num').value || `${m.numero_modulo}.${m.temas.length+1}`,
       titulo_tema: document.getElementById('f_titulo').value || 'Sin título',
@@ -276,7 +305,15 @@ function addTopic(courseId, moduleId) {
       descripcion: document.getElementById('f_desc').value || '',
       metas_aprendizaje: document.getElementById('f_metas').value || '',
       modulo_id: moduleId
-    });
+    };
+    m.temas.push(nuevoTema);
+    const resp = await api.saveTheme(moduleId, nuevoTema); // nuevo: guarda el tema en el backend con saveTheme de api.js
+    if (resp.ok) { // nuevo: saveTheme devuelve { ok: true, data } cuando el status fue 201
+      console.log("Tema guardado:", resp.data);
+    } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+      console.log("Error al guardar el tema:", resp.data);
+      return; // nuevo: si falla, no se cierra el modal ni se re-renderiza
+    }
     closeModal();
     renderMain();
   });
@@ -293,24 +330,38 @@ function editTopic(courseId, moduleId, topicId) {
     <div class="form-row"><label>URL del video</label><input id="f_url" type="text" value="${t.url_video}"></div>
     <div class="form-row"><label>Descripción</label><textarea id="f_desc">${t.descripcion}</textarea></div>
     <div class="form-row"><label>Metas de aprendizaje</label><textarea id="f_metas">${t.metas_aprendizaje}</textarea></div>
-  `, () => {
+  `, async () => { // nuevo: callback async para poder esperar la respuesta de la API
     t.numero_tema = document.getElementById('f_num').value;
     t.titulo_tema = document.getElementById('f_titulo').value;
     t.duracion = parseInt(document.getElementById('f_dur').value) || 0;
     t.url_video = document.getElementById('f_url').value;
     t.descripcion = document.getElementById('f_desc').value;
     t.metas_aprendizaje = document.getElementById('f_metas').value;
+    const resp = await api.updateTheme(topicId, t); // nuevo: actualiza el tema en el backend con updateTheme de api.js
+    if (resp.ok) { // nuevo: updateTheme devuelve { ok: true, data } cuando el status fue 200
+      console.log("Tema actualizado:", resp.data);
+    } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+      console.log("Error al actualizar el tema:", resp.data);
+      return; // nuevo: si falla, no se cierra el modal ni se re-renderiza
+    }
     closeModal();
     renderMain();
   });
 }
 
-function deleteTopic(courseId, moduleId, topicId) {
+async function deleteTopic(courseId, moduleId, topicId) { // nuevo: ahora es async para poder esperar la respuesta de la API
   console.log("deleteTopic", "courseId:", courseId, typeof courseId, "moduleId:", moduleId, typeof moduleId, "topicId:", topicId, typeof topicId);
   if (!confirm('¿Eliminar este tema?')) return;
   const course = getCourse(courseId);
   const m = course.modulos.find(x => x.id === moduleId);
   m.temas = m.temas.filter(t => t.id !== topicId);
+  const resp = await api.deleteTheme(topicId); // nuevo: elimina el tema en el backend con deleteTheme de api.js
+  if (resp.ok) { // nuevo: deleteTheme devuelve { ok: true, data } cuando el status fue 204
+    console.log("Tema eliminado:", resp.data);
+  } else { // nuevo: devuelve { ok: false, data } con el error cuando algo falla
+    console.log("Error al eliminar el tema:", resp.data);
+    return; // nuevo: si falla, no se re-renderiza
+  }
   renderMain();
 }
 

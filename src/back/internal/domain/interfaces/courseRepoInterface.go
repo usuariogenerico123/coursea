@@ -16,8 +16,8 @@ type CourseRepositoryInterface interface{
 	UpdateModule(id uint, module *models.Modulo)error
 	UpdateTheme(id uint, theme *models.Tema)error
 	DeleteCourseById(id uint)error
-	DeleteModuleById(id uint)error
-	DeleteThemeById(id uint)error
+	DeleteModuleById(id uint, moduleModel models.Modulo)error
+	DeleteThemeById(id uint, themeModel models.Tema)error
 	
 }
 

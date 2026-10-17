@@ -253,10 +253,12 @@ func (c *CourseController) DeleteTheme(h *gin.Context){
 	param := h.Param("id")
 	id,err := strconv.ParseUint(param, 10, 0)
 	if(err != nil){
+		
 		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":err.Error()})
 		return
 	}
 	if resp := c.Serv.DeleteTheme(uint(id)); resp != nil{
+		
 		h.AbortWithStatusJSON(http.StatusBadRequest, gin.H{"data":resp.Error()})
 		return
 	}

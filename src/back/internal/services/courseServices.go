@@ -237,23 +237,24 @@ func (c *CourseServices)DeleteCourse(id uint)error{
 }
 
 func (c *CourseServices) DeleteModule(id uint)error{
-	_, err := c.Repo.GetModuleById(id)
+	modelModule, err := c.Repo.GetModuleById(id)
 	if( err != nil){
 		return err
 	}
-	if rep := c.Repo.DeleteModuleById(id); rep != nil{
+	if rep := c.Repo.DeleteModuleById(id, *modelModule); rep != nil{
 		return rep
 	}
 	return nil
 }
 
 func (c *CourseServices) DeleteTheme(id uint)error{
-	_, err := c.Repo.GetThemeById(id)
+	modelTheme, err := c.Repo.GetThemeById(id)
 
 	if(err != nil){
 		return err
+
 	}
-	if resp := c.Repo.DeleteThemeById(id); resp != nil{
+	if resp := c.Repo.DeleteThemeById(id, *modelTheme); resp != nil{
 		return resp
 	}
 	return nil

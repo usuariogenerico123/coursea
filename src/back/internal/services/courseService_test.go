@@ -56,10 +56,10 @@ func (m *MockCourseRepository)UpdateTheme(id uint, theme *models.Tema)error{
 func (m *MockCourseRepository)DeleteCourseById(id uint)error{
 	return nil
 }
-func (m *MockCourseRepository)DeleteModuleById(id uint)error{
+func (m *MockCourseRepository)DeleteModuleById(id uint, modelModule models.Modulo)error{
 	return nil
 }
-func (m *MockCourseRepository)DeleteThemeById(id uint)error{
+func (m *MockCourseRepository)DeleteThemeById(id uint, modelTheme models.Tema)error{
 	args := m.Called(id)
 	return args.Error(0)
 }

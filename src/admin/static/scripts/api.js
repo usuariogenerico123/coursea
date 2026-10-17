@@ -1,7 +1,7 @@
 
 
 
-const API_BASE_PATH = "https://5097273d78f12663-135-237-130-232.serveousercontent.com" + "/api/course"; 
+const API_BASE_PATH = "https://679f94a846b7e091-135-237-130-232.serveousercontent.com" + "/api/course"; 
 
 export const api = {
 

@@ -4,6 +4,8 @@ import (
 	"course/internal/domain/interfaces"
 	"course/internal/domain/models"
 	"errors"
+	"fmt"
+
 	"gorm.io/gorm"
 )
 
@@ -63,6 +65,7 @@ func (c *CourseRepository) GetThemeById(id uint)(*models.Tema, error){
 
 	resp := c.Db.Where("id = ?", id).First(&themeModel)
 	if(resp.Error != nil){
+		fmt.Println("getthemebyid", resp.Error)
 		return nil, resp.Error
 	}
 	return &themeModel, nil
@@ -137,12 +140,8 @@ func(c *CourseRepository)DeleteCourseById(id uint)error{
 
 }
 
-func (c *CourseRepository) DeleteModuleById(id uint)error {
-	var moduleModel models.Modulo
-	if module := c.Db.Where("id = ?", id).First(&moduleModel); module.Error != nil{
-		return module.Error
-	}
-
+func (c *CourseRepository) DeleteModuleById(id uint, moduleModel models.Modulo)error {
+	
 	if del := c.Db.Delete(&moduleModel); del.Error != nil{
 		return del.Error
 	}
@@ -151,12 +150,12 @@ func (c *CourseRepository) DeleteModuleById(id uint)error {
 
 }
 
-func (c *CourseRepository)DeleteThemeById(id uint)error{
-	var themeModel models.Tema
-	if resp := c.Db.Where("id = ?", id).First(themeModel); resp.Error != nil{
-		return resp.Error
-	}
+func (c *CourseRepository)DeleteThemeById(id uint, themeModel models.Tema)error{
+	
+	fmt.Println(id)
+	
 	if del := c.Db.Delete(&themeModel); del.Error != nil{
+		fmt.Println(del.Error)
 		return del.Error
 	}
 	return nil
